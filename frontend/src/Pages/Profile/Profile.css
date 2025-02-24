@@ -1,0 +1,279 @@
+/* Profile.css */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #f5f7fa;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 2.5rem;
+  max-width: 600px;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.avatar-wrapper {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.avatar-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #e0e7ff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+}
+
+.avatar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(99, 102, 241, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.avatar-wrapper:hover .avatar-overlay {
+  opacity: 1;
+}
+
+.camera-icon {
+  color: white;
+  font-size: 1.8rem;
+}
+
+.profile-content {
+  padding: 0 1.5rem;
+}
+
+.profile-info {
+  margin-bottom: 2rem;
+}
+
+.profile-username {
+  color: #1f2937;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.profile-email {
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.profile-bio {
+  color: #4b5563;
+  line-height: 1.6;
+  text-align: center;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 0.5rem;
+}
+
+.profile-input,
+.profile-textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid #e0e7ff;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.profile-input:focus,
+.profile-textarea:focus {
+  outline: none;
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.profile-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-edit,
+.btn-save,
+.logoutButton,
+.btn-cancel {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-edit, .logoutButton {
+  background: #6366f1;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #4f46e5;
+  transform: translateY(-1px);
+}
+
+.btn-save {
+  background: #10b981;
+  color: white;
+}
+
+.btn-save:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.btn-cancel {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-cancel:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+.login-prompt {
+  padding: 2rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  color: #6b7280;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .profile-card {
+    padding: 1.5rem;
+  }
+  
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .profile-username {
+    font-size: 1.5rem;
+  }
+}
+
+
+.logoutButton {
+  margin: 2rem;
+  background-color: rgb(237, 77, 77);
+}
+
+.logoutButton:hover {
+  background: #e53e0f;
+  transform: translateY(-1px);
+}
+
+.deleteButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0.5rem 1rem;
+  background-color: rgb(237, 77, 77);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 1; /* ensures the button stays above other content */
+}
+
+.deleteButton:hover {
+  background-color: #e53e0f;
+  transform: translateY(-2px);
+}
+
+.editButton {
+  position: absolute;
+  top: 10px;
+  right: 90px;
+  padding: 0.5rem 1rem;
+  background-color: rgb(237, 77, 77);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 1; /* ensures the button stays above other content */
+}
+
+.editButton:hover {
+  background-color: #e53e0f;
+  transform: translateY(-2px);
+}
+
+.blog-card {
+  position: relative; /* Allows absolute positioning within the card */
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Optional: to prevent content from overflowing */
+  /* other styles... */
+}
+
+.your-blogs-text{
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+.profile-wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.blog-grid{
+  width: 100%;
+}
+
+

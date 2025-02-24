@@ -1,0 +1,110 @@
+/* News.css */
+
+/* Main container styling */
+.news-div {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  max-width: 800px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.news-div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* News list container */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+/* Image styling */
+.news-div img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 1rem 0;
+  transition: opacity 0.3s ease;
+}
+
+.news-div img:hover {
+  opacity: 0.9;
+}
+
+/* Typography */
+h1 {
+  text-align: center;
+  color: #2d3436;
+  font-size: 2.5rem;
+  margin: 2rem 0;
+  font-weight: 600;
+}
+
+h3 {
+  color: #2d3436;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  line-height: 1.4;
+}
+
+h5 {
+  color: #636e72;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+  font-weight: 400;
+}
+
+/* Index number styling */
+.news-div h1 {
+  font-size: 1rem;
+  color: #a8a8a8;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Source styling */
+.source {
+  display: block;
+  color: #0984e3;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* Responsive grid */
+@media (min-width: 768px) {
+  ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+  }
+  
+  .news-div {
+      margin: 0;
+  }
+}
+
+/* Loading state animation */
+@keyframes shimmer {
+  0% { background-position: -1000px 0 }
+  100% { background-position: 1000px 0 }
+}
+
+.loading-card {
+  height: 400px;
+  background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+  background-size: 1000px 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 12px;
+}

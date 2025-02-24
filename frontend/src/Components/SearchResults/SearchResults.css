@@ -1,0 +1,130 @@
+.search-results-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.search-results-container h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+}
+
+.search-results-container h2 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #444;
+}
+
+/* Blog Section Styles */
+.blogs-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.blog-result-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  background-color: white;
+  transition: transform 0.2s;
+}
+
+.blog-result-card:hover {
+  transform: translateY(-2px);
+}
+
+.blog-result-card img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.blog-result-card .card-content {
+  flex: 1;
+}
+
+.blog-result-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+  color: #1a365d;
+}
+
+.blog-result-card p {
+  margin: 0 0 15px 0;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+.blog-result-card button {
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.blog-result-card button:hover {
+  background-color: #3182ce;
+}
+
+/* News Section Styles */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.news-result-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  overflow: hidden;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.news-result-card:hover {
+  transform: translateY(-2px);
+}
+
+.news-result-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.news-result-card .card-content {
+  padding: 15px;
+}
+
+.news-result-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: #1a365d;
+}
+
+.news-result-card p {
+  margin: 0 0 10px 0;
+  color: #4a5568;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.news-source {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #718096;
+}
+
+.news-source span:first-child {
+  font-weight: 600;
+}

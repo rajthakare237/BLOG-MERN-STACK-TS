@@ -1,0 +1,17 @@
+.app-div {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  flex-shrink: 0; /* Ensure Navbar doesn't shrink */
+}
+
+.footer {
+  flex-shrink: 0; /* Ensure Footer doesn't shrink */
+}
+
+.homebody {
+  flex-grow: 1; /* This will make HomeBody take the remaining available space */
+}

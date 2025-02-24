@@ -1,0 +1,144 @@
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --text-color: #34495e;
+  }
+  
+  .contact-info {
+    display: grid;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .info-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    border-left: 4px solid var(--accent-color);
+  }
+  
+  .info-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .icon-container {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .location-icon, .email-icon, .phone-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+  
+  .location-icon::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    top: 2px;
+  }
+  
+  .location-icon::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    left: 7px;
+    top: 7px;
+  }
+  
+  .email-icon::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 12px;
+    border: 2px solid var(--accent-color);
+    border-radius: 2px;
+    top: 4px;
+  }
+  
+  .email-icon::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--accent-color);
+    top: 14px;
+    left: 6px;
+  }
+  
+  .phone-icon::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--accent-color);
+    border-radius: 4px;
+    transform: rotate(45deg);
+    top: 2px;
+    left: 2px;
+  }
+  
+  .phone-icon::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 4px;
+    border: 2px solid var(--accent-color);
+    border-radius: 2px 2px 0 0;
+    transform: rotate(-45deg);
+    top: 8px;
+    left: 10px;
+  }
+  
+  .card-content h3 {
+    color: var(--primary-color);
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+  }
+  
+  address, .card-content p {
+    color: var(--text-color);
+    font-style: normal;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #c0392b;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-info {
+      grid-template-columns: 1fr;
+    }
+    
+    .info-card {
+      flex-direction: column;
+      align-items: start;
+    }
+  }
