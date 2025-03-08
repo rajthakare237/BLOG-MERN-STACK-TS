@@ -6,12 +6,12 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { logout as logoutAction } from "../../actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { RootState } from "../../store"; // Importing RootState to define the shape of the global store
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-  const auth = useSelector((state: RootState) => state);
-  const navigate = useNavigate();
+  const dispatch = useDispatch(); // Initializing dispatch function for dispatching actions to Redux store
+  const auth = useSelector((state: RootState) => state); // Accessing global authentication state from Redux store
+  const navigate = useNavigate(); // Initializing navigate function for programmatic navigation
   const [searchTerm, setSearchTerm] = useState("");
   let userLoggedIn: boolean = auth.isAuthenticated;
 
@@ -35,10 +35,12 @@ const Navbar = () => {
     }
   };
 
+  // Function to handle search submission
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevents default form submission behavior
     // Navigate to the SearchResults page with the query as a URL parameter
     navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
+    // Clearing the search input field after submission
     setSearchTerm("");
   };
 
@@ -110,7 +112,7 @@ const Navbar = () => {
               <Link to="/profile">
                 <img
                   className="profile_picture"
-                  src={"http://localhost:5000" + auth.profilePicUrl}
+                  src={auth.profilePicUrl}
                   alt="Profile"
                 />
               </Link>
@@ -133,82 +135,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
-
-// import React, { useEffect } from "react";
-// import "./Navbar.css";
-// import logo from "../../assets/logo.png";
-// import profile_picture from "../../assets/profile_picture.jpg";
-// import { Link, useNavigate } from "react-router-dom";
-// import axios from "axios";
-// import { UseDispatch } from "react-redux";
-// import {logout as logoutAction} from "../../actions/authActions";
-// import { useDispatch } from "react-redux";
-// import { useSelector } from "react-redux";
-// import { RootState } from "../../store";
-
-// const Navbar = () => {
-
-//   const dispatch = useDispatch();
-//   const auth = useSelector((state: RootState) => state);
-//   const navigate = useNavigate();
-//   let userLoggedIn : boolean = auth.isAuthenticated;
-
-//   useEffect(()=>{
-//     userLoggedIn = auth.isAuthenticated;
-//   },[auth.isAuthenticated]
-//   );
-
-//   const logout = async () => {
-//     try {
-//       // alert("Token from localStorage:"+ token);
-//       const response = await axios.post("http://localhost:5000/api/auth/logout", {}, { headers: { Authorization: `Bearer ${auth.token}` } })
-//     console.log(response.data.message);
-//     dispatch(logoutAction());
-//     alert("Logout successful.");
-//     navigate("/api/auth/login");
-//     } catch (error) {
-//       console.log(error);
-//     }
-
-//   };
-
-//   return (
-//     <nav className="nav-bar">
-//       <img className="logo" src={logo} alt="" />
-//       <div className="nav-middle-div">
-//         <Link style={{ textDecoration: "none" }} to="/">
-//           <p>HOME</p>
-//         </Link>
-//         <Link style={{ textDecoration: "none" }} to="/api/news">
-//           <p>NEWS</p>
-//         </Link>
-//         <Link style={{ textDecoration: "none" }} to="/about">
-//           <p>ABOUT</p>
-//         </Link>
-//         <Link style={{ textDecoration: "none" }} to="/contact">
-//           <p>CONTACT</p>
-//         </Link>
-//       </div>
-//       <div className="login-profile-div">
-
-//         {userLoggedIn?
-//         <Link to="api/auth/logout">
-//         <button onClick={logout}>Logout</button>
-//       </Link>
-//       : <Link to="api/auth/login">
-//       <button>Login</button>
-//       </Link> }
-        
-        
-//         <Link to="/profile">
-//           <img className="profile_picture" src={"http://localhost:5000"+auth.profilePicUrl} alt="" />
-//         </Link>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;

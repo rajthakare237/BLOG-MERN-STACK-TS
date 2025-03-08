@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
-import axios from "axios";
+import axios from "axios";  //to make http requests
 import dotenv from "dotenv";
-import cors from "cors";
+import cors from "cors"; //CORS for handling cross-origin requests
 import blogRoutes from "./routes/blogRoutes";
 import mongoose, { ConnectOptions } from "mongoose";
 import uploadRoutes from "./routes/uploadRoutes";
@@ -10,22 +10,25 @@ import geopoliticsNewsRoutes from "./routes/geopoliticsNewsRoutes";
 import spaceNewsRoutes from "./routes/spaceNewsRoutes";
 import authRoutes from "./routes/authRoutes";
 import updateProfileRoutes from "./routes/updateProfile"
-import path from "path";
+import path from "path";  //to work with file paths
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
 
+// Middleware to parse JSON and URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+// Serve uploaded files statically
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 
 // Enable CORS
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
   })
 );
 
@@ -73,7 +76,7 @@ app.get("/api/news", async (req: Request, res: Response): Promise<void> => {
 });
 
 mongoose
-  .connect(process.env.MONGO_URI || "", {} as ConnectOptions)
+  .connect(process.env.MONGO_URI || "", {} as ConnectOptions) //`{} as ConnectOptions` is a TypeScript type assertion ensuring an empty object is treated as valid Mongoose connection options.
   .then(() => console.log("MongoDB Connected"))
   .catch((err: Error) => console.error("Error connecting to MongoDB", err));
 

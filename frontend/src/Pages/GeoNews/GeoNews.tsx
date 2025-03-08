@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./GeoNews.css";
 import axios from "axios";
 
+const backend_url = import.meta.env.VITE_BACKEND_URL;
+
 interface NewsItem {
   title: string;
   link: string;
@@ -16,7 +18,7 @@ const GeoNews = () => {
     const fetchNews = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/geopolitics-news"
+          `${backend_url}/api/geopolitics-news`
         );
         setNews(response.data);
       } catch (error) {

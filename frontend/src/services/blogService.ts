@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const backend_url = import.meta.env.VITE_BACKEND_URL;
+
 export const createBlog = async (blog: {
   title: string;
   description: string;
@@ -8,7 +10,7 @@ export const createBlog = async (blog: {
   author: string;
   date: string;
 }) => {
-  return await axios.post("http://localhost:5000/blogs/create", blog);
+  return await axios.post(`${backend_url}/blogs/create`, blog);
 };
 
 export const updateBlog = async (id: string, blog: {title: string;
@@ -17,22 +19,22 @@ export const updateBlog = async (id: string, blog: {title: string;
   imageUrl: string;
   author: string;
   date: string;}) => {
-    return await axios.put(`http://localhost:5000/blogs/update/${id}`,blog);
+    return await axios.put(`${backend_url}/blogs/update/${id}`,blog);
   };
 
 // Add to blogService.ts
 export const getBlogById = async (id: string) => {
-  return axios.get(`http://localhost:5000/blogs/${id}`);
+  return axios.get(`${backend_url}/blogs/${id}`);
 };
 
 export const getBlogs = async () => {
-  return await axios.get("http://localhost:5000/blogs");
+  return await axios.get(`${backend_url}/blogs`);
 };
 
 export const uploadImage = async (image: File) => {
   const formData = new FormData();
   formData.append("image", image);
-  return await axios.post("http://localhost:5000/upload", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+  return await axios.post(`${backend_url}/upload`, formData, {
+    headers: { "Content-Type": "multipart/form-data" }, //tells the server that the request contains binary file data (like images) instead of plain text
   });
 };

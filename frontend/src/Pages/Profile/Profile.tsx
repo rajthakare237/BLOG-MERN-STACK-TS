@@ -10,6 +10,9 @@ import { getBlogs } from "../../services/blogService";
 import axios from "axios";
 
 
+const backend_url = import.meta.env.VITE_BACKEND_URL;
+
+
 const Profile = () => {
   
   const dispatch = useDispatch();
@@ -33,9 +36,11 @@ const Profile = () => {
   const [bio, setBio] = useState(auth.bio);
   const [isEditing, setIsEditing] = useState(false);
   const [profilePic, setProfilePic] = useState(
-    auth.profilePicUrl ? "http://localhost:5000" + auth.profilePicUrl : ""
+    auth.profilePicUrl ? auth.profilePicUrl : ""
   );
   const [newProfilePic, setNewProfilePic] = useState<File | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
+  
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -55,6 +60,7 @@ const Profile = () => {
   }, [blogs]);
 
   const handleSave = async () => {
+    setIsSaving(true);
     const formData = new FormData();
     formData.append("email", email || "");
     formData.append("username", username || "");
@@ -64,14 +70,14 @@ const Profile = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/updateProfile", {
+      const response = await fetch(`${backend_url}/api/updateProfile`, {
         method: "POST",
         body: formData,
       });
 
       if (response.ok) {
         const data = await response.json();
-        setProfilePic("http://localhost:5000" + data.profilePicUrl);
+        setProfilePic(data.profilePicUrl);
         setIsEditing(false);
         // Dispatch the updated profile info to Redux.
         dispatch(
@@ -88,6 +94,8 @@ const Profile = () => {
       }
     } catch (error) {
       console.error("Error while saving profile:", error);
+    } finally{
+      setIsSaving(false);
     }
   };
 
@@ -107,7 +115,7 @@ const Profile = () => {
 
   const deleteBlog = async (blogId: string) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/blogs/delete/${blogId}`, {
+      const response = await axios.delete(`${backend_url}/blogs/delete/${blogId}`, {
         headers: {
           "Content-Type": "application/json",
           // If you require authentication, add your auth token here:
@@ -211,7 +219,7 @@ return (
             {isEditing ? (
               <div className="action-buttons">
                 <button className="btn-save" onClick={handleSave}>
-                  Save Changes
+                {isSaving ? "Saving..." : "Save Changes"}
                 </button>
                 <button className="btn-cancel" onClick={() => setIsEditing(false)}>
                   Cancel

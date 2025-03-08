@@ -5,6 +5,9 @@ import "./News.css";
 import news_placeholder from "../../assets/news_placeholder.png"
 import { useNavigate } from "react-router-dom";
 
+
+const backend_url = import.meta.env.VITE_BACKEND_URL;
+
 // Define types for the structure of the news articles
 interface Article {
   source: {
@@ -28,7 +31,7 @@ const News: React.FC = () => {
     const fetchNews = async () => {
       try {
         const response = await axios.get<{ articles: Article[] }>(
-          "http://localhost:5000/api/news"
+          `${backend_url}/api/news`
         ); // Define response type
         setNews(response.data.articles);
         console.log(response.data.articles[0])

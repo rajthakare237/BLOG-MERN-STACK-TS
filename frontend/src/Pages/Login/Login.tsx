@@ -5,8 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { FiLock, FiMail, FiArrowRight } from 'react-icons/fi';
 import './Login.css';
 
+
+
+const backend_url = import.meta.env.VITE_BACKEND_URL;
+
 const Login: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // Redux dispatch to trigger login action
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,7 +19,7 @@ const Login: React.FC = () => {
   const handleLogin = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${backend_url}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -24,6 +28,7 @@ const Login: React.FC = () => {
       const data = await response.json();
       if (response.ok) {
         const { userName, userBio, userPic, token } = data;
+        // Dispatch login action to update Redux store
         dispatch(login(email, token, userName, userBio, userPic));
         navigate('/');
       } else {
@@ -96,141 +101,3 @@ const Login: React.FC = () => {
 
 export default Login;
 
-
-
-// // components/Login.tsx
-// import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { login } from '../../actions/authActions';
-// import { useNavigate } from 'react-router-dom';
-
-// const Login: React.FC = () => {
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const handleLogin = async () => {
-//     try {
-//       const response = await fetch('http://localhost:5000/api/auth/login', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ email, password }),
-//       });
-
-//       const data = await response.json();
-//       console.log("The data printed is: ", data);
-//       if (response.ok) {
-//         const { userName, userBio, userPic, token } = data;
-//         alert(`Login successful! Your token is: ${token}`);
-//         // Dispatch login action to Redux store.
-//         dispatch(login(email, token, userName, userBio, userPic));
-//         navigate('/');
-//       } else {
-//         alert(data.message || 'Login failed');
-//       }
-//     } catch (error) {
-//       alert('Error during login. Please try again.');
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>Login</h2>
-//       <input
-//         type="email"
-//         placeholder="Enter your email"
-//         value={email}
-//         onChange={(e) => setEmail(e.target.value)}
-//       />
-//       <input
-//         type="password"
-//         placeholder="Enter your password"
-//         value={password}
-//         onChange={(e) => setPassword(e.target.value)}
-//       />
-//       <button onClick={handleLogin}>Login</button>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
-
-
-
-// // import React, { useState } from 'react';
-// // import { login } from '../../actions/authActions';
-// // import { store } from '../../store/index';
-// // import { useNavigate } from 'react-router-dom';
-
-// // const Login: React.FC = () => {
-// //   const navigate = useNavigate();
-// //   const [email, setEmail] = useState('');
-// //   const [password, setPassword] = useState('');
-// //   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-// //   const handleLogin = async () => {
-// //     try {
-// //       const response = await fetch('http://localhost:5000/api/auth/login', {
-// //         method: 'POST',
-// //         headers: { 'Content-Type': 'application/json' },
-// //         body: JSON.stringify({ email, password }),
-// //       });
-  
-// //       const data = await response.json();
-// //       console.log("The data printed is: "+data);
-// //       if (response.ok) {
-
-// //         const {userName, userBio, userPic, token} = data
-// //         // Save the token in localStorage for persistence
-// //         localStorage.setItem("authToken", token);
-// //         localStorage.setItem("email", email);
-// //         localStorage.setItem("bio", userBio);
-// //         localStorage.setItem("username", userName);
-// //         localStorage.setItem("profilePic", userPic);
-  
-// //         // Display the token in an alert
-// //         alert(`Login successful! Your token is: ${data.token}`);
-  
-// //         // Dispatch login action to the Redux store
-// //         store.dispatch(login(email, token, userName, userBio, userPic));
-
-// //         navigate("/")
-// //       } else {
-// //         alert(data.message || 'Login failed');
-// //       }
-// //     } catch (error) {
-// //       alert('Error during login. Please try again.');
-// //     }
-// //   };
-  
-  
-
-// //   // Listen for state changes
-// //   store.subscribe(() => {
-// //     setIsAuthenticated(store.getState().isAuthenticated);
-// //   });
-
-// //   return (
-// //     <div>
-// //       <h2>Login</h2>
-// //       <input
-// //         type="email"
-// //         placeholder="Enter your email"
-// //         value={email}
-// //         onChange={(e) => setEmail(e.target.value)}
-// //       />
-// //       <input
-// //         type="password"
-// //         placeholder="Enter your password"
-// //         value={password}
-// //         onChange={(e) => setPassword(e.target.value)}
-// //       />
-// //       <button onClick={handleLogin}>Login</button>
-// //       <p>{isAuthenticated ? 'Logged in' : 'Not logged in'}</p>
-// //     </div>
-// //   );
-// // };
-
-// // export default Login;

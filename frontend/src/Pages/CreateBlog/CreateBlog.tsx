@@ -11,19 +11,25 @@ const CreateBlog = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
 
   const auth  = useSelector((state: RootState) => state);
   const author = auth.email?.toString();
 
   const navigate = useNavigate();
 
+  // Function to handle image selection and upload
   const onImageSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
+      setIsUploading(true); // Show loading bar
+
       try {
         const response = await uploadImage(event.target.files[0]);
         setImageUrl(response.data.imageUrl);
       } catch (error) {
-        console.error("image upload failed", error);
+        console.error("Image upload failed", error);
+      } finally {
+        setIsUploading(false); // Hide loading bar after upload
       }
     }
   };
@@ -71,6 +77,8 @@ const CreateBlog = () => {
               </div>
             )}
           </label>
+          {/* Loading Bar */}
+          {isUploading && <div className="loading-bar"></div>}
         </div>
 
         <div className="form-group">

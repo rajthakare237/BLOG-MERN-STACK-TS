@@ -6,6 +6,8 @@ import news_placeholder from "../../assets/news_placeholder.png";
 import { getBlogs } from "../../services/blogService";
 import "./SearchResults.css"
 
+const backend_url = import.meta.env.VITE_BACKEND_URL;
+
 interface Article {
   source: {
     id: string | null;
@@ -29,11 +31,12 @@ interface Blog {
 }
 
 const SearchResults: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const location = useLocation(); // Hook to get current URL location
+  const navigate = useNavigate(); // Hook to programmatically navigate between pages
+
   // Retrieve the query parameter from the URL
-  const params = new URLSearchParams(location.search);
-  const query = params.get("q") || "";
+  const params = new URLSearchParams(location.search); //URLSearchParams is a built-in JavaScript API for working with query parameters in a URL
+  const query = params.get("q") || ""; //params.get("q") retrieves the value of the "q" query parameter.
 
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [news, setNews] = useState<Article[]>([]);
@@ -56,7 +59,7 @@ const SearchResults: React.FC = () => {
     const fetchNews = async () => {
       try {
         const response = await axios.get<{ articles: Article[] }>(
-          "http://localhost:5000/api/news"
+          `${backend_url}/api/news`
         );
         setNews(response.data.articles);
       } catch (error) {
@@ -77,6 +80,10 @@ const SearchResults: React.FC = () => {
 
   // Update news card click handler
   const handleNewsClick = (article: Article) => {
+    /*
+    encodeURIComponent(article.title) ensures that the article title is safely encoded for use in the URL by replacing 
+    special characters (e.g., spaces, ?, &) with their encoded equivalents.
+    */
     navigate(`/news-article/${encodeURIComponent(article.title)}`, { 
       state: { article } 
     });

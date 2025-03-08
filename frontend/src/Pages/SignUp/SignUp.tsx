@@ -3,6 +3,9 @@ import axios from "axios";
 import { FiLock, FiMail, FiArrowRight } from 'react-icons/fi';
 import './SignUp.css';
 
+
+const backend_url = import.meta.env.VITE_BACKEND_URL;
+
 const SignUp: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +15,7 @@ const SignUp: React.FC = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/sign-up", 
+        `${backend_url}/api/auth/sign-up`, 
         { email, password }
       );
       alert(response.data.message);

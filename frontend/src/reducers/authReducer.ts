@@ -1,5 +1,7 @@
+// Import necessary action types and interfaces
 import { LOGIN, LOGOUT, AuthAction } from '../actions/authActions';
 
+// Define the structure of the authentication state
 interface AuthState {
   isAuthenticated: boolean;
   email: string | null;
@@ -9,6 +11,7 @@ interface AuthState {
   profilePicUrl: string | null;
 }
 
+// Define the initial state of authentication
 const initialState: AuthState = {
   isAuthenticated: false,
   email: null,
@@ -18,6 +21,7 @@ const initialState: AuthState = {
   profilePicUrl: null
 };
 
+// The authentication reducer function that handles login and logout actions
 export const authReducer = (state = initialState, action: AuthAction): AuthState => {
   switch (action.type) {
     case LOGIN:

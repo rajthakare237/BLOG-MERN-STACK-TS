@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./MilitaryNews.css";
 import axios from "axios";
 
+
+
+const backend_url = import.meta.env.VITE_BACKEND_URL;
+
 interface NewsItem {
   title: string;
   link: string;
@@ -16,7 +20,7 @@ const MilitaryNews = () => {
     const fetchNews = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/military-news"
+          `${backend_url}/api/military-news`
         );
         setNews(response.data);
       } catch (error) {

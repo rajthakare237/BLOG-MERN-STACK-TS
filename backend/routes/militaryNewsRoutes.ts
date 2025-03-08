@@ -26,6 +26,7 @@ router.get("/military-news", async (req, res) => {
     const response4 = await axios.get(rssUrl4, { responseType: "text" });
     const parsedData4 = await parseStringPromise(response4.data);
 
+    //using spread operator to merge multiple arrays in one array
     const final = [
       ...parsedData1.rss.channel[0].item,
       ...parsedData2.rss.channel[0].item,

@@ -1,15 +1,19 @@
 import express, { response } from "express";
 import axios from "axios";
 import { parseStringPromise } from "xml2js";
-import cheerio from "cheerio";
+import cheerio from "cheerio"; //used for web scraping
 import { data } from "cheerio/dist/commonjs/api/attributes";
 
 const router = express.Router();
 
+/**
+ * Fetches an image URL from a given news article link.
+ * It extracts Open Graph (og:image) or Twitter (twitter:image) meta tags.
+ */
 const fetchImage = async (url: string) => {
   try {
     const { data } = await axios.get(url);
-    const $ = cheerio.load(data);
+    const $ = cheerio.load(data);  //load the page into cheerio for parsing
 
     const imageUrl =
       $('meta[property="og:image"]').attr("content") ||
@@ -36,6 +40,7 @@ router.get("/space-news", async (req, res) => {
     const promises = rssUrls.map((url) =>
       axios.get(url, { responseType: "text" })
     );
+    
     const responses = await Promise.all(promises);
     const parsedData = await Promise.all(
       responses.map((response) => parseStringPromise(response.data))

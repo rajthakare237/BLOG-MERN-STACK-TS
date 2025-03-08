@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./SpaceNews.css";
 import axios from "axios";
 
+
+
+const backend_url = import.meta.env.VITE_BACKEND_URL;
+
 interface NewsItem {
   title: string;
   link: string;
@@ -17,7 +21,7 @@ const SpaceNews = () => {
     const fetchNews = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/space-news"
+          `${backend_url}/api/space-news`
         );
         setNews(response.data);
       } catch (error) {

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { getBlogs } from "../../services/blogService";
 import { store } from "../../store/index";
 
+const backend_url = import.meta.env.VITE_BACKEND_URL;
+
 const HomeBody: React.FC = () => {
   interface Blog {
     _id: string;
@@ -20,11 +22,12 @@ const HomeBody: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(store.getState().isAuthenticated);
   const navigate = useNavigate();
 
+  // Subscribe to Redux store changes to track authentication status
   useEffect(() => {
     const unsubscribe = store.subscribe(() => {
       setIsLoggedIn(store.getState().isAuthenticated);
     });
-    return () => unsubscribe();
+    return () => unsubscribe();  // Cleanup subscription on component unmount
   }, []);
 
   useEffect(() => {

@@ -1,7 +1,12 @@
  import express from "express";
- import bcrypt from "bcrypt";
+ import bcrypt from "bcrypt";  //for hashing passwords
  import jwt from "jsonwebtoken";
  import User from "../models/User";
+ import dotenv from "dotenv";
+
+ dotenv.config();
+
+ const secretKey = process.env.SECRET_KEY as string;
 
  const router = express.Router();
 
@@ -11,7 +16,7 @@
  router.post("/sign-up", async (req, res) => {
     const {email, password} = req.body;
     try{
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10); //hash the password before saving to db
         const newUser = new User({email, password: hashedPassword});
         await newUser.save();
         res.status(201).json({message: "User created successfully"});
@@ -30,13 +35,15 @@
             res.status(404).json({message: "User not found."});
             return;
         }
+        //compare the provided password with hashed password
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
         if (!isPasswordCorrect){
              res.status(401).json({ message: "Invalid Password" });
              return;
         }
 
-        const token = jwt.sign({id: user._id}, "hello_secret_key",  {expiresIn: "1h"});
+        //generate the jwt token for the user, valid for 1hour
+        const token = jwt.sign({id: user._id}, secretKey,  {expiresIn: "1h"});
         console.log("Token is: "+token);
 
         const userBio = user.bio;
@@ -50,36 +57,5 @@
         res.status(500).json({message: "Error while logging in the user"});
     }
  });
-
-//  router.post("/logout", async (req, res) => {
-
-//     const authHeader = req.headers.authorization;
-
-//     if(!authHeader){
-//         res.status(400).json({message: "No token provided."});
-//         return;
-//     }
-
-//     const token = authHeader.split(" ")[1];
-
-//     if(!token){
-//         res.status(400).json({message: "Invalid token provided."});
-//         return;
-//     }
-
-//     try {
-//         jwt.verify(token, "hello_secret_key");
-
-//         tokenBlackList.push(token);
-
-//         res.status(200).json({message: "Logout is successful."})
-//         console.log("Logout successful...")
-//     } catch (error) {
-//         res.status(401).json({message: "Invalid or expired token"});
-//     }
-
-
-
-//  });
 
  export default router;
