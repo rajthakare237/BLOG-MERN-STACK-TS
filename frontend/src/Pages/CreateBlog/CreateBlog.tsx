@@ -14,7 +14,7 @@ const CreateBlog = () => {
   const [isUploading, setIsUploading] = useState(false);
 
   const auth  = useSelector((state: RootState) => state);
-  const author = auth.email?.toString();
+  const author = auth.email!;
 
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ const CreateBlog = () => {
 
   const handleSubmit = async () => {
     try {
-      const date = Date.now();
+      const date = Date.now().toString();
       await createBlog({ title, description, category, imageUrl, author, date });
       alert("Blog created successfully!");
       // Clear form after submission

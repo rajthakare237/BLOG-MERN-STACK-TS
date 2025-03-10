@@ -28,10 +28,10 @@ const Profile = () => {
   }
 
   const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(store.getState().isAuthenticated);
+  const [isLoggedIn] = useState(store.getState().isAuthenticated);
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState(auth.email);
+  const [email] = useState(auth.email);
   const [username, setUsername] = useState(auth.username);
   const [bio, setBio] = useState(auth.bio);
   const [isEditing, setIsEditing] = useState(false);

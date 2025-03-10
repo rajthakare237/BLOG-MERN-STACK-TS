@@ -34,7 +34,7 @@ const Login: React.FC = () => {
       } else {
         alert(data.message || 'Login failed');
       }
-    } catch (error) {
+    } catch {
       alert('Error during login. Please try again.');
     } finally {
       setIsLoading(false);

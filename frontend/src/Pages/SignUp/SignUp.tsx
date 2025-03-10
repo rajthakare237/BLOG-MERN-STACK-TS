@@ -19,7 +19,7 @@ const SignUp: React.FC = () => {
         { email, password }
       );
       alert(response.data.message);
-    } catch (error) {
+    } catch{
       alert("Signup failed. Please try again.");
     } finally {
       setIsLoading(false);

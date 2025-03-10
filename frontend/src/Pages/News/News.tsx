@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./News.css";
-import news_placeholder from "../../assets/news_placeholder.png"
-import { useNavigate } from "react-router-dom";
+import news_placeholder from "../../assets/news_placeholder.png";
 
 
 const backend_url = import.meta.env.VITE_BACKEND_URL;
@@ -25,7 +24,6 @@ interface Article {
 
 const News: React.FC = () => {
   const [news, setNews] = useState<Article[]>([]); // Use the Article[] type for the state
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchNews = async () => {

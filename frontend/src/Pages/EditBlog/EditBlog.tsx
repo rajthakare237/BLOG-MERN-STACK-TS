@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./EditBlog.css";
 import add_image_icon from "../../assets/add_image.png";
 import { updateBlog, uploadImage } from "../../services/blogService";
-import { RootState } from "../../store";
-import { useSelector } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getBlogById } from '../../services/blogService';
 
 const EditBlog = () => {
@@ -58,8 +56,6 @@ const EditBlog = () => {
     }
   }, [id])
 
-  const auth  = useSelector((state: RootState) => state);
-  const author = auth.email?.toString();
 
   const navigate = useNavigate();
 
@@ -152,7 +148,7 @@ const EditBlog = () => {
 
         <div className="button-group">
           <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
-          <button className="submit-btn" onClick={() => handleSubmit(id, blog)}>
+          <button className="submit-btn" onClick={() => id && blog && handleSubmit(id, blog)}>
             Save Changes
           </button>
         </div>

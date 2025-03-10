@@ -3,13 +3,10 @@ import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { logout as logoutAction } from "../../actions/authActions";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../store"; // Importing RootState to define the shape of the global store
 
 const Navbar = () => {
-  const dispatch = useDispatch(); // Initializing dispatch function for dispatching actions to Redux store
   const auth = useSelector((state: RootState) => state); // Accessing global authentication state from Redux store
   const navigate = useNavigate(); // Initializing navigate function for programmatic navigation
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,21 +16,7 @@ const Navbar = () => {
     userLoggedIn = auth.isAuthenticated;
   }, [auth.isAuthenticated]);
 
-  const logout = async () => {
-    try {
-      // const response = await axios.post(
-      //   "http://localhost:5000/api/auth/logout",
-      //   {},
-      //   { headers: { Authorization: `Bearer ${auth.token}` } }
-      // );
-      // console.log(response.data.message);
-      dispatch(logoutAction());
-      alert("Logout successful.");
-      navigate("/api/auth/login");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
 
   // Function to handle search submission
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -112,7 +95,7 @@ const Navbar = () => {
               <Link to="/profile">
                 <img
                   className="profile_picture"
-                  src={auth.profilePicUrl}
+                  src={auth.profilePicUrl?.toString()}
                   alt="Profile"
                 />
               </Link>

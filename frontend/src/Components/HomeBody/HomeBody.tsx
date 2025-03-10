@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { getBlogs } from "../../services/blogService";
 import { store } from "../../store/index";
 
-const backend_url = import.meta.env.VITE_BACKEND_URL;
 
 const HomeBody: React.FC = () => {
   interface Blog {
