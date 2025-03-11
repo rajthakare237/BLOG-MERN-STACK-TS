@@ -4,7 +4,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx ts-node server.ts"
+    "start": "npx ts-node server.ts",
+    "postinstall": "chmod +x node_modules/.bin/ts-node"
   },
   "keywords": [],
   "author": "",
@@ -32,8 +33,6 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/multer": "^1.4.12",
-    "@types/node": "^22.7.8",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
+    "@types/node": "^22.7.8"
   }
 }
