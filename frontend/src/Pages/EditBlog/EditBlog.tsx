@@ -10,6 +10,7 @@ const EditBlog = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+    const [isUploading, setIsUploading] = useState(false);
 
   const { id } = useParams<{ id: string }>();
   const [blog, setBlog] = useState<Blog | null>(null);
@@ -29,11 +30,16 @@ const EditBlog = () => {
 
   useEffect(() => {
     const fetchBlog = async () => {
-      
+      // alert("running!!");
       if (id) {
         try {
           const response = await getBlogById(id);
           setBlog(response.data);
+          const blog = response.data;
+          setTitle(blog.title.toString());
+          setDescription(blog.description.toString());
+          setCategory(blog.category.toString());
+          setImageUrl(blog.imageUrl.toString());
           
         } catch (error) {
           console.error("Error fetching blog:", error);
@@ -44,28 +50,32 @@ const EditBlog = () => {
     };
     
     fetchBlog();
-  }, [id, blog]);
+  }, []);
 
 
-  useEffect(() => {
-    if(blog!=null){
-      setTitle(blog.title.toString());
-      setDescription(blog.description.toString());
-      setCategory(blog.category.toString());
-      setImageUrl(blog.imageUrl.toString());
-    }
-  }, [id])
+  // useEffect(() => {
+  //   if(blog!=null){
+  //     setTitle(blog.title.toString());
+  //     setDescription(blog.description.toString());
+  //     setCategory(blog.category.toString());
+  //     setImageUrl(blog.imageUrl.toString());
+  //   }
+  // }, [])
 
 
   const navigate = useNavigate();
 
   const onImageSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
+      setIsUploading(true);
       try {
         const response = await uploadImage(event.target.files[0]);
         setImageUrl(response.data.imageUrl);
       } catch (error) {
         console.error("image upload failed", error);
+      }
+      finally{
+        setIsUploading(false);
       }
     }
   };
@@ -114,6 +124,8 @@ const EditBlog = () => {
               </div>
             )}
           </label>
+          {/* Loading Bar */}
+          {isUploading && <div className="loading-bar"></div>}
         </div>
 
         <div className="form-group">

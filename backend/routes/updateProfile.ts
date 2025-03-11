@@ -39,21 +39,23 @@ router.post("/updateProfile", upload.single("profilePic"), async (req: Request, 
         if(username) user.username = username;
         if(bio) user.bio = bio;
         
-        // Update profile picture if a file was uploaded
-        // Upload the image file buffer to Cloudinary using a Promise
-        const result = await new Promise((resolve, reject) => {
-            if (req.file) {
-            cloudinary.uploader
-                .upload_stream((error, result) => {
-                if (error) reject(error);
-                else resolve(result?.secure_url);
-                })
-                .end(req.file.buffer);
-            }
-        });
+        if(req.file){
+            // Update profile picture if a file was uploaded
+            // Upload the image file buffer to Cloudinary using a Promise
+            const result = await new Promise((resolve, reject) => {
+                if (req.file) {
+                cloudinary.uploader
+                    .upload_stream((error, result) => {
+                    if (error) reject(error);
+                    else resolve(result?.secure_url);
+                    })
+                    .end(req.file.buffer);
+                }
+            });
+            user.profilePic = String(result);
+        }    
 
-        user.profilePic = String(result);
-
+        
         await user.save();
 
         res.status(200).json({
