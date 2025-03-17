@@ -54,7 +54,7 @@ A full-stack blogging platform with curated news feeds, built using the MERN sta
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/blog-mern-app.git
+git clone https://github.com/rajthakare237/BLOG-MERN-STACK-TS.git
 cd blog-mern-app
 ```
 
