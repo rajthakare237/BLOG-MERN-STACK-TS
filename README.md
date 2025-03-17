@@ -48,6 +48,8 @@ A full-stack blogging platform with curated news feeds, built using the MERN sta
 git clone https://github.com/yourusername/blog-mern-app.git
 cd blog-mern-app
 
+## Installation Guide
+
 ### 2. Start Backend
 ```bash
 cd backend
