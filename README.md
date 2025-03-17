@@ -44,6 +44,12 @@ A full-stack blogging platform with curated news feeds, built using the MERN sta
 - Cloudinary account
 - Google Drive API credentials (for news curation)
 
+## APP Demo
+
+### 🔗 View All Screenshots  
+[Google Drive - Full Demo]([https://drive.google.com/drive/folders/YOUR_FOLDER_ID](https://drive.google.com/drive/folders/1RUxxeq_0_4M30x2CdKEkF4e6LomN4L-H?usp=drive_link))
+
+
 ## Installation Guide
 
 ### 1. Clone Repository
