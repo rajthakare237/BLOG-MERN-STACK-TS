@@ -1,6 +1,9 @@
 # BlogSphere - MERN Stack Blogging Platform
 
-![BlogSphere Banner](https://drive.google.com/uc?export=view&id=13iFKrjYLuaDPoRxXdBQHmSDenIci-WtL)
+![Home](https://drive.google.com/uc?export=view&id=13iFKrjYLuaDPoRxXdBQHmSDenIci-WtL)
+![Image 1](https://drive.google.com/uc?export=view&id=1_oVkuG-nJEoLaLet_EKmOwH7jdf-gPW7)  
+![Image 2](https://drive.google.com/uc?export=view&id=1fUCBDRUypvuc3uY9AHN3SnJgWOZiqd8g)  
+![Image 3](https://drive.google.com/uc?export=view&id=1dKfDajV9coCcyuFK8D8qfWYXqs7Lq0ns)  
 
 A full-stack blogging platform with curated news feeds, built using the MERN stack (MongoDB, Express, React, Node.js) with Redux state management and JWT authentication.
 
