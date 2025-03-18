@@ -1,4 +1,4 @@
-# BlogSphere - MERN Stack Blogging Platform
+# Global Insight - MERN Stack Blogging Platform
 
 ![Home](https://drive.google.com/uc?export=view&id=13iFKrjYLuaDPoRxXdBQHmSDenIci-WtL)
 ![Image 1](https://drive.google.com/uc?export=view&id=1_oVkuG-nJEoLaLet_EKmOwH7jdf-gPW7)  
@@ -11,6 +11,7 @@ A full-stack blogging platform with curated news feeds, built using the MERN sta
 
 - 🚀 User authentication (JWT)
 - ✍️ Create/Edit/Delete blog posts
+- 🔍 Search Functionality
 - 📰 Curated news feeds (Science, Geopolitics, Space)
 - 🔄 Redux with Redux Persist for state management
 - 🖼️ Image uploads via Cloudinary
@@ -23,7 +24,7 @@ A full-stack blogging platform with curated news feeds, built using the MERN sta
 
 **Frontend:**
 - React 18 + TypeScript
-- Redux Toolkit + Redux Thunk
+- Redux Toolkit
 - React Router 6
 - Axios for API calls
 - React Icons & FontAwesome
@@ -42,7 +43,7 @@ A full-stack blogging platform with curated news feeds, built using the MERN sta
 - Node.js (v18+)
 - MongoDB Atlas account
 - Cloudinary account
-- Google Drive API credentials (for news curation)
+- API credentials (for news curation)
 
 ## APP Demo
 
