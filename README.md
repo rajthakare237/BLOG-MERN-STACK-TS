@@ -1,9 +1,15 @@
 # Global Insight - MERN Stack Blogging Platform
 
-![Home](https://drive.google.com/uc?export=view&id=13iFKrjYLuaDPoRxXdBQHmSDenIci-WtL)
-![Image 1](https://drive.google.com/uc?export=view&id=1_oVkuG-nJEoLaLet_EKmOwH7jdf-gPW7)  
-![Image 2](https://drive.google.com/uc?export=view&id=1fUCBDRUypvuc3uY9AHN3SnJgWOZiqd8g)  
-![Image 3](https://drive.google.com/uc?export=view&id=1dKfDajV9coCcyuFK8D8qfWYXqs7Lq0ns)  
+![image1](https://drive.google.com/uc?export=view&id=1MQVP48h4yjGDCeykR5LTCaNyh6RdVRhp)
+![image2](https://drive.google.com/uc?export=view&id=1fCW5ldSRNDgSp-Evjz2hCBAMIAgff22T)
+![image3](https://drive.google.com/uc?export=view&id=10rw0nOklQShUdoDzeFEIAHJbXQENCgzi)
+![image4](https://drive.google.com/uc?export=view&id=1R5IvQnMTHtxCkvxk_vwD9e9B57_dxDBz)
+![image5](https://drive.google.com/uc?export=view&id=1KoLeDmL8trevzOAGw8gViwJiZGkpYOiI)
+![image6](https://drive.google.com/uc?export=view&id=1WlA-X41iSIfXn938zWGLCl11Pk_AOVbz)
+![image7](https://drive.google.com/uc?export=view&id=1fD8BtVVhKNfHJkPo4FRKRtu-v1bi3CMR)
+![image8](https://drive.google.com/uc?export=view&id=1GkFiD9gG65qeu27gbjDi3kIi4j8hZKep)
+![image9](https://drive.google.com/uc?export=view&id=1lo_qbvjDRUEAMqXzZ339KO1pulbx51KK)
+![image10](https://drive.google.com/uc?export=view&id=1uN9PC38jxsfXUA-ucWJ1S-IPnI8-4AGY)
 
 A full-stack blogging platform with curated news feeds, built using the MERN stack (MongoDB, Express, React, Node.js) with Redux state management and JWT authentication.
 
