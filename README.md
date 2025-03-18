@@ -19,7 +19,7 @@
 ![image9](https://drive.google.com/uc?export=view&id=1lo_qbvjDRUEAMqXzZ339KO1pulbx51KK)  
 ---  
 ![image10](https://drive.google.com/uc?export=view&id=1uN9PC38jxsfXUA-ucWJ1S-IPnI8-4AGY)  
-
+---
 
 A full-stack blogging platform with curated news feeds, built using the MERN stack (MongoDB, Express, React, Node.js) with Redux state management and JWT authentication.
 
