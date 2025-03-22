@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FiLock, FiMail, FiArrowRight } from 'react-icons/fi';
 import './SignUp.css';
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from '../../actions/authActions';
 
 
 const backend_url = import.meta.env.VITE_BACKEND_URL;
@@ -10,6 +13,16 @@ const SignUp: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleGuestLogin = () => {
+      setIsLoading(true);
+      dispatch(login("guest@gmail.com", "guestToken", "guest", "This is a guest account", "https://res.cloudinary.com/dc3sxqqjg/image/upload/v1742625370/hw2rd7pepiena51fne88.jpg"));
+      navigate('/');
+      setIsLoading(false);
+  
+  }
 
   const handleSignUp = async () => {
     setIsLoading(true);
@@ -65,6 +78,20 @@ const SignUp: React.FC = () => {
             ) : (
               <>
                 Sign Up
+                <FiArrowRight className="button-icon" />
+              </>
+            )}
+          </button>
+          <button 
+            className="auth-button"
+            onClick={handleGuestLogin}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <div className="spinner"></div>
+            ) : (
+              <>
+                Continue as a Guest
                 <FiArrowRight className="button-icon" />
               </>
             )}

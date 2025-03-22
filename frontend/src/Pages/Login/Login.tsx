@@ -16,6 +16,14 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleGuestLogin = () => {
+    setIsLoading(true);
+    dispatch(login("guest@gmail.com", "guestToken", "guest", "This is a guest account", "https://res.cloudinary.com/dc3sxqqjg/image/upload/v1742625370/hw2rd7pepiena51fne88.jpg"));
+    navigate('/');
+    setIsLoading(false);
+
+  }
+
   const handleLogin = async () => {
     setIsLoading(true);
     try {
@@ -80,6 +88,20 @@ const Login: React.FC = () => {
             ) : (
               <>
                 Sign In
+                <FiArrowRight className="button-icon" />
+              </>
+            )}
+          </button>
+          <button 
+            className="auth-button"
+            onClick={handleGuestLogin}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <div className="spinner"></div>
+            ) : (
+              <>
+                Continue as a Guest
                 <FiArrowRight className="button-icon" />
               </>
             )}
