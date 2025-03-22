@@ -1,5 +1,5 @@
  import express from "express";
- import bcrypt from "bcrypt";  //for hashing passwords
+ import bcrypt from "bcryptjs";  //for hashing passwords
  import jwt from "jsonwebtoken";
  import User from "../models/User";
  import dotenv from "dotenv";
