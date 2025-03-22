@@ -13,7 +13,7 @@
 //  let tokenBlackList: string[] = []
 
  //Sign up route
- router.post("/sign-up", async (req, res) => {
+ router.post("/signup", async (req, res) => {
     const {email, password} = req.body;
     try{
         const hashedPassword = await bcrypt.hash(password, 10); //hash the password before saving to db

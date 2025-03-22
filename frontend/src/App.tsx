@@ -27,8 +27,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="api/auth/login" element={<Login />} />
-          <Route path="/api/auth/sign-up" element={<SignUp />} />
+          <Route path="/api/auth/login" element={<Login />} />
+          <Route path="/api/auth/signup" element={<SignUp />} />
           <Route path="/" element={<HomeBody />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/createblog" element={<CreateBlog />} />

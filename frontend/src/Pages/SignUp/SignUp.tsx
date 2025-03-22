@@ -28,7 +28,7 @@ const SignUp: React.FC = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        `${backend_url}/api/auth/sign-up`, 
+        `${backend_url}/api/auth/signup`, 
         { email, password }
       );
       alert(response.data.message);
