@@ -111,7 +111,7 @@ const Login: React.FC = () => {
         <div className="auth-footer">
           <p>
             Don't have an account?{' '}
-            <a href="/api/auth/signup" className="auth-link">
+            <a onClick={()=> navigate("/api/auth/signup")} className="auth-link">
               Create one
             </a>
           </p>

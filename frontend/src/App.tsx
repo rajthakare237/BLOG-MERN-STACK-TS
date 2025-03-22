@@ -17,6 +17,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import BlogDetail from "./Pages/BlogDetail/BlogDetail";
 import SearchResults from "./Components/SearchResults/SearchResults";
 import EditBlog from "./Pages/EditBlog/EditBlog";
+import SignUp from "./Pages/SignUp/SignUp";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/api/auth/login" element={<Login />} />
-          <Route path="/api/auth/signup" element={<About />} />
+          <Route path="/api/auth/signup" element={<SignUp />} />
           <Route path="/" element={<HomeBody />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/createblog" element={<CreateBlog />} />
