@@ -4,6 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npm rebuild bcrypt --update-binary",
     "start": "npx ts-node server.ts",
     "postinstall": "chmod +x node_modules/.bin/ts-node"
   },
