@@ -11,7 +11,6 @@ import News from "./Pages/News/News";
 import MilitaryNews from "./Pages/MilitaryNews/MilitaryNews";
 import GeoNews from "./Pages/GeoNews/GeoNews";
 import SpaceNews from "./Pages/SpaceNews/SpaceNews";
-import SignUp from "./Pages/SignUp/SignUp";
 import { Provider } from "react-redux";
 import { store, persistor } from "./store/index";
 import { PersistGate } from 'redux-persist/integration/react';
