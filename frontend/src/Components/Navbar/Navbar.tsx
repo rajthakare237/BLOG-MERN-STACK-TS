@@ -1,7 +1,7 @@
 // Navbar.tsx
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/trans_logo.png";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store"; // Importing RootState to define the shape of the global store

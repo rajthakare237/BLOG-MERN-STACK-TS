@@ -2,7 +2,7 @@
 import { createStore } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 // This uses localStorage; if you want sessionStorage or another storage, adjust accordingly.
-import storage from 'redux-persist/lib/storage'; // Uses localStorage by default
+import storage from 'redux-persist/lib/storage/session'; // Uses localStorage by default
 import { authReducer } from '../reducers/authReducer';
 
 // Configuration for Redux Persist
