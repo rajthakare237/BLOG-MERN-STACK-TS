@@ -87,14 +87,10 @@ const SignUp: React.FC = () => {
             onClick={handleGuestLogin}
             disabled={isLoading}
           >
-            {isLoading ? (
-              <div className="spinner"></div>
-            ) : (
-              <>
+            {<>
                 Continue as a Guest
                 <FiArrowRight className="button-icon" />
-              </>
-            )}
+              </>}
           </button>
         </div>
 
