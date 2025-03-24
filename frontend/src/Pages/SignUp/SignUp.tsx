@@ -32,6 +32,7 @@ const SignUp: React.FC = () => {
         { email, password }
       );
       alert(response.data.message);
+      navigate("/api/auth/login");
     } catch{
       alert("Signup failed. Please try again.");
     } finally {
